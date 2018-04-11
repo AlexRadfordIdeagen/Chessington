@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Chessington.GameEngine.Pieces
 {
@@ -15,7 +16,7 @@ namespace Chessington.GameEngine.Pieces
 
         public abstract IEnumerable<Square> GetAvailableMoves(Board board);
 
-        public void MoveTo(Board board, Square newSquare)
+        public virtual void MoveTo(Board board, Square newSquare)
         {
             var currentSquare = board.FindPiece(this);
             board.MovePiece(currentSquare, newSquare);
