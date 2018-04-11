@@ -13,20 +13,25 @@ namespace Chessington.GameEngine.Pieces
         {
             var myLocation = board.FindPiece(this);
             var legalMoves = new List<Square>();
-            CheckLegalMoves(myLocation, legalMoves);
+            switch (Player)
+            {
+                case Player.Black when myLocation.Row != 1:
+                    legalMoves.Add(new Square(myLocation.Row + 1, myLocation.Col));
+                    break;
+                case Player.Black when myLocation.Row == 1:
+                    legalMoves.Add(new Square(myLocation.Row + 2, myLocation.Col));
+                    break;
+                case Player.White when myLocation.Row != 7:
+                    legalMoves.Add(new Square(myLocation.Row - 1, myLocation.Col));
+                    break;
+                case Player.White when myLocation.Row == 7:
+                    legalMoves.Add(new Square(myLocation.Row - 2, myLocation.Col));
+                    break;
+            }
+
 
             return legalMoves;
 
-        }
-
-        private void CheckLegalMoves(Square myLocation, List<Square> legalMoves)
-        {
-            if (Player == Player.Black)
-                legalMoves.Add(new Square(myLocation.Row + 1, myLocation.Col));
-            else if (Player == Player.White)
-            {
-                legalMoves.Add(new Square(myLocation.Row - 1, myLocation.Col));
-            }
         }
     }
 }
