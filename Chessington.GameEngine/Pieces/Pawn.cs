@@ -27,23 +27,43 @@ namespace Chessington.GameEngine.Pieces
         {
             var myLocation = board.FindPiece(this);
             var legalMoves = new List<Square>();
-            if (Player == Player.Black && !hasMoved)
-                legalMoves.Add(new Square(myLocation.Row + 2, myLocation.Col));
+
+
+
             if (Player == Player.Black)
             {
-                legalMoves.Add(new Square(myLocation.Row + 1, myLocation.Col));
+                pawnMoveCheck(board, myLocation, legalMoves, +1);
+            }
+            if (Player == Player.White)
+            {
+                pawnMoveCheck(board, myLocation, legalMoves, -1);
             }
 
             if (Player == Player.White && !hasMoved)
-                legalMoves.Add(new Square(myLocation.Row - 2, myLocation.Col));
-            if (Player == Player.White)
             {
-                legalMoves.Add(new Square(myLocation.Row - 1, myLocation.Col));
+                if (board.GetPiece(new Square(myLocation.Row - 1, myLocation.Col)) == null)
+                {
+                    pawnMoveCheck(board, myLocation, legalMoves, -2);
+                }
+            }
+            if (Player == Player.Black && !hasMoved)
+            {
+                if (board.GetPiece(new Square(myLocation.Row + 1, myLocation.Col)) == null)
+                {
+                    pawnMoveCheck(board, myLocation, legalMoves, +2);
+                }
             }
 
-
             return legalMoves;
-
         }
+
+        private static void pawnMoveCheck(Board board, Square myLocation, List<Square> legalMoves, int movement)
+        {
+            if (board.GetPiece(new Square(myLocation.Row + movement, myLocation.Col)) == null)
+            {
+                legalMoves.Add(new Square(myLocation.Row + movement, myLocation.Col));
+            }
+        }
+
     }
 }
