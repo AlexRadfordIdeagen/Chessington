@@ -15,7 +15,6 @@ namespace Chessington.GameEngine.Pieces
 
             var myLocation = board.FindPiece(this);
             var legalMoves = new List<Square>();
-
             for (var i = 1; i < 8; i++)
             {
                 var placeICanMove = new Square(myLocation.Row + i, myLocation.Col);

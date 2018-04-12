@@ -12,37 +12,43 @@ namespace Chessington.GameEngine.Pieces
         {
             var myLocation = board.FindPiece(this);
             var legalMoves = new List<Square>();
+            var placeICanMove = new Square();
 
-            legalMoves.Add(new Square(myLocation.Row - 2, myLocation.Col + 1));
-            legalMoves.Add(new Square(myLocation.Row - 2, myLocation.Col - 1));
-            legalMoves.Add(new Square(myLocation.Row - 1, myLocation.Col + 2));
-            legalMoves.Add(new Square(myLocation.Row - 1, myLocation.Col - 2));
-            legalMoves.Add(new Square(myLocation.Row + 2, myLocation.Col - 1));
-            legalMoves.Add(new Square(myLocation.Row + 2, myLocation.Col + 1));
-            legalMoves.Add(new Square(myLocation.Row + 1, myLocation.Col + 2));
-            legalMoves.Add(new Square(myLocation.Row + 1, myLocation.Col - 2));
+            placeICanMove = Square.At(myLocation.Row - 2, myLocation.Col + 1);
+            LegalCheck(legalMoves, placeICanMove);
 
-            foreach (var item in legalMoves)
-            {
-                if (item.Col < 0)
-                {
-                    legalMoves.Remove(item);
-                }
-                if (item.Col > 7)
-                {
-                    legalMoves.Remove(item);
-                }
-                if (item.Row < 0)
-                {
-                    legalMoves.Remove(item);
-                }
-                if (item.Row > 7)
-                {
-                    legalMoves.Remove(item);
-                }
-            }
+            placeICanMove = Square.At(myLocation.Row - 2, myLocation.Col - 1);
+            LegalCheck(legalMoves, placeICanMove);
 
+            placeICanMove = Square.At(myLocation.Row - 1, myLocation.Col + 2);
+            LegalCheck(legalMoves, placeICanMove);
+
+            placeICanMove = Square.At(myLocation.Row - 1, myLocation.Col - 2);
+            LegalCheck(legalMoves, placeICanMove);
+
+            placeICanMove = Square.At(myLocation.Row + 2, myLocation.Col - 1);
+            LegalCheck(legalMoves, placeICanMove);
+
+            placeICanMove = Square.At(myLocation.Row + 2, myLocation.Col + 1);
+            LegalCheck(legalMoves, placeICanMove);
+
+            placeICanMove = Square.At(myLocation.Row + 1, myLocation.Col + 2);
+            LegalCheck(legalMoves, placeICanMove);
+
+            placeICanMove = Square.At(myLocation.Row + 1, myLocation.Col - 2);
+            LegalCheck(legalMoves, placeICanMove);
+
+
+            legalMoves.Remove(myLocation);
             return legalMoves;
+        }
+
+        private static void LegalCheck(List<Square> legalMoves, Square placeICanMove)
+        {
+            if (placeICanMove.IsSquareValid())
+            {
+                legalMoves.Add(placeICanMove);
+            }
         }
     }
 }
