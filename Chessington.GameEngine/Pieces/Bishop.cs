@@ -17,22 +17,22 @@ namespace Chessington.GameEngine.Pieces
             for (var i = 0; i < 8; i++)
             {
                 var placeICanMove = new Square(myLocation.Row + i, myLocation.Col + i);
-                if (placeICanMove != myLocation & placeICanMove.Row < 8  & placeICanMove.Col < 8)
+                if (placeICanMove != myLocation && placeICanMove.Row < 8  && placeICanMove.Col < 8)
                 {
                     legalMoves.Add(placeICanMove);
                 }
                 placeICanMove = new Square(myLocation.Row + i, myLocation.Col - i);
-                if (placeICanMove != myLocation & placeICanMove.Row < 8 & placeICanMove.Col >= 0)
+                if (placeICanMove != myLocation && placeICanMove.Row < 8 && placeICanMove.Col >= 0)
                 {
                     legalMoves.Add(placeICanMove);
                 }
                 placeICanMove = new Square(myLocation.Row - i, myLocation.Col + i);
-                if (placeICanMove != myLocation & placeICanMove.Row >= 0 & placeICanMove.Col < 8)
+                if (placeICanMove != myLocation && placeICanMove.Row >= 0 && placeICanMove.Col < 8)
                 {
                     legalMoves.Add(placeICanMove);
                 }
                  placeICanMove = new Square(myLocation.Row - i, myLocation.Col - i);
-                if (placeICanMove != myLocation & placeICanMove.Row >= 0 & placeICanMove.Col >= 0)
+                if (placeICanMove != myLocation && placeICanMove.Row >= 0 && placeICanMove.Col >= 0)
                 {
                     legalMoves.Add(placeICanMove);
                 }
