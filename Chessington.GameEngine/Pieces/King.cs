@@ -15,42 +15,31 @@ namespace Chessington.GameEngine.Pieces
             var placeICanMove = new Square();
 
             placeICanMove = Square.At(myLocation.Row - 1, myLocation.Col + 1);
-            LegalCheck(legalMoves, placeICanMove);
+            CheckLegal(board, legalMoves, placeICanMove);
 
             placeICanMove = Square.At(myLocation.Row - 1, myLocation.Col - 1);
-            LegalCheck(legalMoves, placeICanMove);
+            CheckLegal(board, legalMoves, placeICanMove);
 
             placeICanMove = Square.At(myLocation.Row + 1, myLocation.Col + 1);
-            LegalCheck(legalMoves, placeICanMove);
+            CheckLegal(board, legalMoves, placeICanMove);
 
             placeICanMove = Square.At(myLocation.Row + 1, myLocation.Col - 1);
-            LegalCheck(legalMoves, placeICanMove);
+            CheckLegal(board, legalMoves, placeICanMove);
 
             placeICanMove = Square.At(myLocation.Row, myLocation.Col - 1);
-            LegalCheck(legalMoves, placeICanMove);
+            CheckLegal(board, legalMoves, placeICanMove);
 
             placeICanMove = Square.At(myLocation.Row, myLocation.Col + 1);
-            LegalCheck(legalMoves, placeICanMove);
+            CheckLegal(board, legalMoves, placeICanMove);
 
             placeICanMove = Square.At(myLocation.Row + 1, myLocation.Col);
-            LegalCheck(legalMoves, placeICanMove);
+            CheckLegal(board, legalMoves, placeICanMove);
 
             placeICanMove = Square.At(myLocation.Row - 1, myLocation.Col);
-            LegalCheck(legalMoves, placeICanMove);
-
-
-
-
-
+            CheckLegal(board, legalMoves, placeICanMove);
 
             return legalMoves;
         }
-        private static void LegalCheck(List<Square> legalMoves, Square placeICanMove)
-        {
-            if (placeICanMove.IsSquareValid())
-            {
-                legalMoves.Add(placeICanMove);
-            }
-        }
+
     }
 }

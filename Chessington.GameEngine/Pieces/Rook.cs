@@ -81,10 +81,7 @@ namespace Chessington.GameEngine.Pieces
                     break;
                 }
                 else break;
-
-
             }
-
             legalMoves.Remove(myLocation);
             return legalMoves;
         }
