@@ -14,28 +14,55 @@ namespace Chessington.GameEngine.Pieces
             var myLocation = board.FindPiece(this);
             var legalMoves = new List<Square>();
 
-            for (var i = 0; i < 8; i++)
+            for (var i = 1; i < 8; i++)
             {
                 var placeICanMove = new Square(myLocation.Row + i, myLocation.Col + i);
-                if (placeICanMove != myLocation && placeICanMove.Row < 8  && placeICanMove.Col < 8)
+                if (
+                    placeICanMove.IsSquareValid() &&
+                    board.GetPiece(placeICanMove) == null
+                )
                 {
                     legalMoves.Add(placeICanMove);
                 }
-                placeICanMove = new Square(myLocation.Row + i, myLocation.Col - i);
-                if (placeICanMove != myLocation && placeICanMove.Row < 8 && placeICanMove.Col >= 0)
+                else break;
+            }
+
+            for (var i = 1; i < 8; i++)
+            {
+                var placeICanMove = new Square(myLocation.Row + i, myLocation.Col - i);
+                if (
+                    placeICanMove.IsSquareValid() &&
+                    board.GetPiece(placeICanMove) == null
+                )
                 {
                     legalMoves.Add(placeICanMove);
                 }
-                placeICanMove = new Square(myLocation.Row - i, myLocation.Col + i);
-                if (placeICanMove != myLocation && placeICanMove.Row >= 0 && placeICanMove.Col < 8)
+                else break;
+            }
+
+            for (var i = 1; i < 8; i++)
+            {
+                var placeICanMove = new Square(myLocation.Row - i, myLocation.Col + i);
+                if (
+                    placeICanMove.IsSquareValid() &&
+                    board.GetPiece(placeICanMove) == null
+                )
                 {
                     legalMoves.Add(placeICanMove);
                 }
-                 placeICanMove = new Square(myLocation.Row - i, myLocation.Col - i);
-                if (placeICanMove != myLocation && placeICanMove.Row >= 0 && placeICanMove.Col >= 0)
+                else break;
+            }
+            for (var i = 1; i < 8; i++)
+            {
+                var placeICanMove = new Square(myLocation.Row - i, myLocation.Col - i);
+                if (
+                    placeICanMove.IsSquareValid() &&
+                    board.GetPiece(placeICanMove) == null
+                )
                 {
                     legalMoves.Add(placeICanMove);
                 }
+                else break;
             }
 
 

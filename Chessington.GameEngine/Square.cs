@@ -22,17 +22,6 @@
                    Col < (GameSettings.BoardSize) &&
                    Row >= 0 &&
                    Col >= 0;
-            //if (Row > (GameSettings.BoardSize) &&
-            //    Col > (GameSettings.BoardSize) &&
-            //    Row < 0 &&
-            //    Col < 0)
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            //    return true;
-            //}
         }
         public bool Equals(Square other)
         {
