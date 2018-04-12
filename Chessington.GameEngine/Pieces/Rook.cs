@@ -15,53 +15,74 @@ namespace Chessington.GameEngine.Pieces
 
             for (var i = 1; i < 8; i++)
             {
-                var placeICanMove = Square.At(myLocation.Row + i, myLocation.Col);
-                if (
-                    placeICanMove.IsSquareValid() &&
-                    board.GetPiece(placeICanMove) == null
-                    )
+                var place = Square.At(myLocation.Row + i, myLocation.Col);
+                if
+                    (place.IsSquareValid() && board.GetPiece(place) == null)
                 {
-                    legalMoves.Add(placeICanMove);
+                    legalMoves.Add(place);
+                }
+
+                else if (place.IsSquareValid() && board.GetPiece(place).Player != Player)
+                {
+                    legalMoves.Add(place);
+                    break;
                 }
                 else break;
+
             }
 
             for (var i = 1; i < 8; i++)
             {
-                var placeICanMove = Square.At(myLocation.Row, myLocation.Col + i);
-                if (
-                    placeICanMove.IsSquareValid() &&
-                    board.GetPiece(placeICanMove) == null
-                    )
+                var place = Square.At(myLocation.Row, myLocation.Col + i);
+                if (place.IsSquareValid() && board.GetPiece(place) == null)
                 {
-                    legalMoves.Add(placeICanMove);
+                    legalMoves.Add(place);
+                }
+
+                else if (place.IsSquareValid() && board.GetPiece(place).Player != Player)
+                {
+                    legalMoves.Add(place);
+                    break;
                 }
                 else break;
+
+
             }
 
             for (var i = 1; i < 8; i++)
             {
-                var placeICanMove = Square.At(myLocation.Row - i, myLocation.Col);
-                if (
-                    placeICanMove.IsSquareValid() &&
-                    board.GetPiece(placeICanMove) == null
-                    )
+                var place = Square.At(myLocation.Row - i, myLocation.Col);
+                if
+                    (place.IsSquareValid() && board.GetPiece(place) == null)
                 {
-                    legalMoves.Add(placeICanMove);
+                    legalMoves.Add(place);
+                }
+
+                else if (place.IsSquareValid() && board.GetPiece(place).Player != Player)
+                {
+                    legalMoves.Add(place);
+                    break;
                 }
                 else break;
+
+
             }
             for (var i = 1; i < 8; i++)
             {
-                var placeICanMove = Square.At(myLocation.Row, myLocation.Col - i);
-                if (
-                    placeICanMove.IsSquareValid() &&
-                    board.GetPiece(placeICanMove) == null
-                    )
+                var place = Square.At(myLocation.Row, myLocation.Col - i);
+                if
+                    (place.IsSquareValid() && board.GetPiece(place) == null)
                 {
-                    legalMoves.Add(placeICanMove);
+                    legalMoves.Add(place);
+                }
+                else if (place.IsSquareValid() && board.GetPiece(place).Player != Player)
+                {
+                    legalMoves.Add(place);
+                    break;
                 }
                 else break;
+
+
             }
 
             legalMoves.Remove(myLocation);
